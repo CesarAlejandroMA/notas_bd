@@ -11,19 +11,19 @@
         public function getCode(){
             return $this->code;
         }
-        public function setCode(){
+        public function setCode($value){
             $this->code = $value;
         }
         public function getFirstName(){
             return $this->firstName;
         }
-        public function setFirstName(){
+        public function setFirstName($value){
             $this->firstName = $value;
         }
         public function getLastName(){
             return $this->lastName;
         }
-        public function setLastName(){
+        public function setLastName($value){
             $this->lastName = $value;
         }
         
