@@ -66,6 +66,14 @@
             return $resultadoSQL;
         }
 
+        function delete($code){
+            $sql = 'DELETE FROM estudiantes WHERE codigo=' . $code;
+            $conexiondb = new ConexionDbController();
+            $resultadoSQL = $conexiondb->execSQL($sql);
+            $conexiondb->close();
+            return $resultadoSQL;
+        }
+
     }
 
 ?>

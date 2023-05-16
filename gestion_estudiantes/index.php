@@ -43,6 +43,7 @@
                     echo '<td>' . $estudiante->getLastName() . '</td>';
                     echo '<td>';
                     echo '      <a href="views/form_estudiante.php?codigo=' . $estudiante->getCode() . '">Modificar</a>';
+                    echo '      <a href="views/action_elim_est.php?codigo=' . $estudiante->getCode() . '">Eliminar</a>';
                     echo '</td>';
                     echo '</tr>';
                 }
