@@ -8,16 +8,16 @@
     use estudiante\Estudiante;
     use usuarioController\UsuarioController;
 
-    $code = empty($_GET['code'])?'' : $_GET['code'];
+    $code = empty($_GET['codigo'])?'' : $_GET['codigo'];
     $titulo = 'Registrar Estudiante';
     $urlAction = "action_regis_est.php";
     $estudiante = new Estudiante();
-    
-    /*
-    value="<?php echo $usuario->getCode(); ?>"
-    value="<?php echo $usuario->getFirstName(); ?>"
-    value="<?php echo $usuario->getLastName(); ?>"
-    */
+    if(!empty($code)){
+        $titulo = 'Modificar Estudiante';
+        $urlAction = "action_modif_est.php";
+        $usuarioController = new UsuarioController();
+        $estudiante = $usuarioController->readRow($code);
+    }
 
 ?>
 
@@ -36,17 +36,17 @@
     <form action="<?php echo $urlAction; ?>" method="post">
         <label>
             <span>Código:</span>
-            <input type="number" name="code" min="1"  require>
+            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCode(); ?>" require>
         </label>
         <br>
         <label>
             <span>Nombre:</span>
-            <input type="text" name="firstName"  require>
+            <input type="text" name="nombres" value="<?php echo $estudiante->getFirstName(); ?>" require>
         </label>
         <br>
         <label>
             <span>Apellido:</span>
-            <input type="text" name="lastName"  require>
+            <input type="text" name="apellidos" value="<?php echo $estudiante->getLastName(); ?>" require>
         </label>
         <br>
         <button type="submit">Guardar</button>

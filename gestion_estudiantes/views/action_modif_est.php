@@ -13,13 +13,12 @@
     $estudiante->setLastName($_POST['apellidos']);
 
     $usuarioController = new UsuarioController();
-    $resultado = $usuarioController->Create($estudiante);
+    $resultado = $usuarioController->update($estudiante->getCode(), $estudiante);
     if($resultado){
-        echo '<h1>Estudiante Registrado</h1>';
+        echo '<h1>Estudiante modificado</h1>';
     }else{
-        echo '<h1>No se pudo registrar el estudiante</h1>';
+        echo '<h1>No se pudo modificar el estudiante</h1>';
     }
-
 ?>
 
 <br>
