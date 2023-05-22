@@ -44,12 +44,14 @@
                     echo '<td>';
                     echo '      <a href="views/form_estudiante.php?codigo=' . $estudiante->getCode() . '">Modificar</a>';
                     echo '      <a href="views/action_elim_est.php?codigo=' . $estudiante->getCode() . '">Eliminar</a>';
+                    echo '      <a href="actividades.php?codigo=' . $estudiante->getCode() . '&nombre=' . $estudiante->getFirstName() . '&apellido=' . $estudiante->getLastName() . '">Notas</a>';
                     echo '</td>';
                     echo '</tr>';
                 }
                 ?>
             </tbody>
         </table>
+        <br>
         <a href="views/form_estudiante.php">Agregar estudiante</a>
     </main>
 </body>

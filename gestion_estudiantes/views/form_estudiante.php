@@ -36,6 +36,9 @@
     <form action="<?php echo $urlAction; ?>" method="post">
         <label>
             <span>Código:</span>
+            <!--
+                El value se usa para pasar los datos por post
+            -->
             <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCode(); ?>" require>
         </label>
         <br>
