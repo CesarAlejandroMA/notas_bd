@@ -13,6 +13,7 @@
     abstract class ActBaseController
     {
         abstract function create($model);
+        abstract function readRow($code);
     }
 
 ?>

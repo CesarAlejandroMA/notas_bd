@@ -2,13 +2,20 @@
 
     require 'models/estudiante.php';
     require 'models/actividad.php';
+    require 'controllers/conexionDbController.php';
+    require 'controllers/baseController.php';
+    require 'controllers/actividadesController.php';
 
     use estudiante\Estudiante;
     use actividad\Actividad;
+    use actividadController\ActividadController;
 
     $codigoEstudiante = $_GET['codigo'];
     $nombreEstudiante = $_GET['nombre'];
     $apellidoEstudiante = $_GET['apellido'];
+
+    $actividadController = new ActividadController();
+    $actividades = $actividadController->readRow($codigoEstudiante);
 
 ?>
 
@@ -50,20 +57,17 @@
                 </thead>
                 <tbody>
                     <?php
-                    /*
-                    foreach($estudiantes as $estudiante){
+                    foreach($actividades as $actividad){
                         echo '<tr>';
-                        echo '<td>' . $estudiante->getCode() . '</td>';
-                        echo '<td>' . $estudiante->getFirstName() . '</td>';
-                        echo '<td>' . $estudiante->getLastName() . '</td>';
+                        echo '<td>' . $actividad->getId() . '</td>';
+                        echo '<td>' . $actividad->getDescripcion() . '</td>';
+                        echo '<td>' . $actividad->getNota() . '</td>';
                         echo '<td>';
-                        echo '      <a href="views/form_estudiante.php?codigo=' . $estudiante->getCode() . '">Modificar</a>';
-                        echo '      <a href="views/action_elim_est.php?codigo=' . $estudiante->getCode() . '">Eliminar</a>';
-                        echo '      <a href="notas.php">Notas</a>';
+                        echo '      <a href="">Modificar</a>';
+                        echo '      <a href="">Eliminar</a>';
                         echo '</td>';
                         echo '</tr>';
                     }
-                    */
                     ?>
                 </tbody>
             </table>

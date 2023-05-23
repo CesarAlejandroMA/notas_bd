@@ -5,15 +5,24 @@
     require '../controllers/baseController.php';
     require '../controllers/actividadesController.php';
 
-    use estudiante\Estudiante;
+    use actividad\Actividad;
     use actividadController\ActividadController;
 
-    $codigoEstudiante = $_GET['codigo'];
-    $nombreEstudiante = $_GET['nombre'];
-    $apellidoEstudiante = $_GET['apellido'];
+    $nombreEstudiante = $_POST['nombre'];
+    $apellidoEstudiante = $_POST['apellido'];
 
-    $estudiante->setCode($_POST['codigo']);
     $actividad = new Actividad();
-    $actividad->setId
+    $actividad->setDescripcion($_POST['descripcion']);
+    $actividad->setNota($_POST['nota']);
+    $actividad->setCodEstudiante($_POST['codigo']);
+
+    $actividadController = new ActividadController();
+    $resultado = $actividadController->Create($actividad);
+    if($resultado){
+        echo '<h1>Actividad Registrada</h1>';
+        echo '<a href="../actividades.php?codigo=' . $actividad->getCodEstudiante() . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Notas</a>';
+    }else{
+        echo '<h1>No se pudo registrar la actividad</h1>';
+    }
 
 ?>

@@ -5,7 +5,7 @@
     require '../controllers/baseController.php';
     require '../controllers/actividadesController.php';
 
-    use estudiante\Estudiante;
+    use actividad\Actividad;
     use actividadController\ActividadController;
 
     $codigoEstudiante = $_POST['codigo'];
@@ -33,24 +33,34 @@
         <form action="<?php echo $urlAction; ?>" method="post">
         <label>
             <span>Código: <?php echo $codigoEstudiante ?></span>
+            <input type="hidden" name="codigo" value="<?php echo $codigoEstudiante ?>">
+            <br>
         </label>
         <label>
             <span>Nombre: <?php echo $nombreEstudiante ?></span>
+            <input type="hidden" name="nombre" value="<?php echo $nombreEstudiante ?>">
+            <br>
         </label>
         <label>
             <span>Apellido: <?php echo $apellidoEstudiante ?></span>
+            <input type="hidden" name="apellido" value="<?php echo $apellidoEstudiante ?>">
+            <br>
         </label>
         <label>
             <span>Descripción: </span>
-            <textarea name="descripcion" cols="30" rows="10"></textarea>
+            <textarea name="descripcion" cols="30" rows="10" value="<?php echo $actividad->getDescripcion(); ?>" ></textarea>
+            <br>
         </label>
         <label>
             <span>Nota: </span>
-            <input type="number" name="nota" require>
+            <input type="number" name="nota" value="<?php echo $actividad->getNota(); ?>" require>
+            <br>
         </label>
         <br>
         <button type="submit">Guardar</button>
         </form>
+
+        <a href="../actividades.php">Volver</a>
 </body>
 
 </html>
