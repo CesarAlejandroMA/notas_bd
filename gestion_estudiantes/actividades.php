@@ -10,10 +10,13 @@
     use actividad\Actividad;
     use actividadController\ActividadController;
 
+    $contadorNotas = 0;
+    $sumaNotas = 0;
+
     $codigoEstudiante = $_GET['codigo'];
     $nombreEstudiante = $_GET['nombre'];
     $apellidoEstudiante = $_GET['apellido'];
-
+    
     $actividadController = new ActividadController();
     $actividades = $actividadController->read($codigoEstudiante);
 
@@ -64,23 +67,35 @@
                         echo '<td>' . $actividad->getNota() . '</td>';
                         echo '<td>';
                         echo '      <a href="views/form_actividad.php?id=' . $actividad->getId() . ' &codigo=' . $codigoEstudiante . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Modificar</a>';
-                        echo '      <a href="">Eliminar</a>';
+                        echo '      <a href="views/action_elim_act.php?id=' . $actividad->getId() . '&codigo=' . $codigoEstudiante . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Eliminar</a>';
                         echo '</td>';
                         echo '</tr>';
+                        $contadorNotas ++;
+                        $sumaNotas = $sumaNotas + $actividad->getNota();
                     }
+
+                    if($contadorNotas == 0){
+                        $imprimir = "No hay registro de actividades";
+                    }else{
+                        $promedio = $sumaNotas / $contadorNotas;
+
+                        if($promedio >= 3){
+                            $imprimir = "<label style='color: green'>" . $promedio;
+                        }else if($promedio < 3){
+                            $imprimir = "<label style='color: red'>" . $promedio;
+                        }
+                        
+                    }
+
+
                     ?>
                 </tbody>
             </table>
-            <br><br>
-            <p>Promedio: </p>
+            <br>
+            <?php
+            ?>
+            <p>Promedio: <?php echo $imprimir; ?></p>
 
-                
-            <!--
-            <a href="views/form_actividad.php?codigo=
-            <?php //echo $codigoEstudiante; ?>&nombre=
-            <?php //echo $nombreEstudiante; ?>&apellido=
-            <?php //echo $apellidoEstudiante; ?>">Agregar actividad</a><br>
-            -->
 
             <?php
 

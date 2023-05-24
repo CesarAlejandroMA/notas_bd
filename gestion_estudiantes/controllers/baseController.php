@@ -16,6 +16,7 @@
         abstract function read($code);
         abstract function readRow($id);
         abstract function update($id, $model);
+        abstract function delete($id);
     }
 
 ?>

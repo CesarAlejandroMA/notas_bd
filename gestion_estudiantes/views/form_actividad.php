@@ -64,10 +64,10 @@
         </label>
         <label>
             <span>Nota: </span>
-            <input type="number" name="nota" value="<?php echo $actividad->getNota(); ?>" require>
-            <input type="hidden" name="id" value="<?php echo $id ?>">
+            <input type="number" name="nota" min="0.1" max = "5" step="0.1" value="<?php echo $actividad->getNota(); ?>" require>
             <br>
         </label>
+        <input type="hidden" name="id" value="<?php echo $id ?>">
         <br>
         <button type="submit">Guardar</button>
         </form>

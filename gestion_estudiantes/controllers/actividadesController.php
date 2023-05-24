@@ -70,6 +70,14 @@
             return $resultadoSQL;
         }
 
+        function delete($id){
+            $sql = 'DELETE FROM actividades WHERE id=' . $id;
+            $conexiondb = new ConexionDbController();
+            $resultadoSQL = $conexiondb->execSQL($sql);
+            $conexiondb->close();
+            return $resultadoSQL;
+        }
+
     }
 
 ?>
