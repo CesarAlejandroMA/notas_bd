@@ -15,7 +15,7 @@
     $apellidoEstudiante = $_GET['apellido'];
 
     $actividadController = new ActividadController();
-    $actividades = $actividadController->readRow($codigoEstudiante);
+    $actividades = $actividadController->read($codigoEstudiante);
 
 ?>
 
@@ -63,7 +63,7 @@
                         echo '<td>' . $actividad->getDescripcion() . '</td>';
                         echo '<td>' . $actividad->getNota() . '</td>';
                         echo '<td>';
-                        echo '      <a href="">Modificar</a>';
+                        echo '      <a href="views/form_actividad.php?id=' . $actividad->getId() . ' &codigo=' . $codigoEstudiante . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Modificar</a>';
                         echo '      <a href="">Eliminar</a>';
                         echo '</td>';
                         echo '</tr>';

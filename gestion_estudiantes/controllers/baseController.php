@@ -13,7 +13,9 @@
     abstract class ActBaseController
     {
         abstract function create($model);
-        abstract function readRow($code);
+        abstract function read($code);
+        abstract function readRow($id);
+        abstract function update($id, $model);
     }
 
 ?>

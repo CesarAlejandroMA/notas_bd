@@ -8,13 +8,24 @@
     use actividad\Actividad;
     use actividadController\ActividadController;
 
-    $codigoEstudiante = $_POST['codigo'];
-    $nombreEstudiante = $_POST['nombre'];
-    $apellidoEstudiante = $_POST['apellido'];
-
-    $titulo = 'Registrar Actividad';
-    $urlAction = "action_regis_act.php";
+    $id = empty($_GET['id'])?'' : $_GET['id'];
     $actividad = new Actividad();
+
+    if(!empty($id)){ //Se envía una id por la url
+        $codigoEstudiante = $_GET['codigo'];
+        $nombreEstudiante = $_GET['nombre'];
+        $apellidoEstudiante = $_GET['apellido'];
+        $titulo = 'Modificar Actividad';
+        $urlAction = "action_modif_act.php";
+        $actividadController = new ActividadController();
+        $actividad = $actividadController->readRow($id);
+    }else{ //No llega la id por ningún lado
+        $codigoEstudiante = $_POST['codigo'];
+        $nombreEstudiante = $_POST['nombre'];
+        $apellidoEstudiante = $_POST['apellido'];
+        $titulo = 'Registrar Actividad';
+        $urlAction = "action_regis_act.php";
+    }
 
 ?>
 
@@ -48,19 +59,18 @@
         </label>
         <label>
             <span>Descripción: </span>
-            <textarea name="descripcion" cols="30" rows="10" value="<?php echo $actividad->getDescripcion(); ?>" ></textarea>
-            <br>
+            <input name="descripcion" style="width: 300px; height: 80px" value="<?php echo $actividad->getDescripcion(); ?>" ></input>
+            <br><br>
         </label>
         <label>
             <span>Nota: </span>
             <input type="number" name="nota" value="<?php echo $actividad->getNota(); ?>" require>
+            <input type="hidden" name="id" value="<?php echo $id ?>">
             <br>
         </label>
         <br>
         <button type="submit">Guardar</button>
         </form>
-
-        <a href="../actividades.php">Volver</a>
 </body>
 
 </html>

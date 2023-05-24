@@ -9,23 +9,6 @@
     class ActividadController extends ActBaseController
     {   
 
-        /*
-        function create($estudiante){
-            $sql = 'INSERT INTO estudiantes ';
-            $sql .= '(codigo, nombres, apellidos) values';
-            $sql .= '(';
-            $sql .= $estudiante->getCode(). ',';
-            $sql .= '"' . $estudiante->getFirstName(). '",';
-            $sql .= '"' . $estudiante->getLastName() . '"';
-            $sql .= ')';
-            $conexiondb = new ConexionDbController();
-            $resultadoSQL = $conexiondb->execSQL($sql);
-            $conexiondb->close();
-            return $resultadoSQL;
-        }
-
-        */
-
         function create($actividad)
         {
             $sql = 'INSERT INTO actividades';
@@ -40,41 +23,7 @@
             return $resultadoSQL;
         }
 
-        /*
-        function readRow($code){
-            $sql = 'SELECT * FROM estudiantes';
-            $sql .= ' WHERE codigo=' .$code;
-            $conexiondb = new ConexionDbController();
-            $resultadoSQL = $conexiondb->execSQL($sql);
-            $estudiante = new Estudiante();
-           while($registro = $resultadoSQL -> fetch_assoc()){
-                $estudiante -> setCode($registro['codigo']);
-                $estudiante -> setFirstName($registro['nombres']);
-                $estudiante -> setLastName($registro['apellidos']);
-           } 
-           $conexiondb->close();
-           return $estudiante;
-        }
-        
-
-        function read(){
-            $sql = 'SELECT * FROM estudiantes';
-            $conexiondb = new ConexionDbController();
-            $resultadoSQL = $conexiondb->execSQL($sql);
-            $estudiantes = [];
-           while($registro = $resultadoSQL -> fetch_assoc()){
-                $estudiante = new Estudiante();
-                $estudiante -> setCode($registro['codigo']);
-                $estudiante -> setFirstName($registro['nombres']);
-                $estudiante -> setLastName($registro['apellidos']);
-                array_push($estudiantes, $estudiante);
-           } 
-           $conexiondb->close();
-           return $estudiantes;
-        }
-        */
-
-        function readRow($code)
+        function read($code)
         {
             $sql = 'SELECT * FROM actividades';
             $sql .= ' WHERE codigoEstudiante= ' .$code;
@@ -91,6 +40,34 @@
            } 
            $conexiondb->close();
            return $actividades;
+        }
+
+        function readRow($id){
+            $sql = 'SELECT * FROM actividades';
+            $sql .= ' WHERE id=' .$id;
+            $conexiondb = new ConexionDbController();
+            $resultadoSQL = $conexiondb->execSQL($sql);
+            $actividad = new Actividad();
+           while($registro = $resultadoSQL -> fetch_assoc()){
+                $actividad ->setId($id);
+                $actividad -> setDescripcion($registro['descripcion']);
+                $actividad -> setNota($registro['nota']);
+                $actividad -> setCodEstudiante($registro['codigoEstudiante']);
+           } 
+           $conexiondb->close();
+           return $actividad;
+        }
+
+        function update($id, $actividad){
+            $sql = 'UPDATE actividades SET ';
+            $sql .= 'descripcion = "' . $actividad->getDescripcion() . '",';
+            $sql .= 'nota = ' . $actividad->getNota() . ' ';
+            $sql .= 'WHERE id=' . $id;
+            $conexiondb = new ConexionDbController();
+            //var_dump($sql); Sirve para ver el SQL que se está envíando
+            $resultadoSQL = $conexiondb->execSQL($sql);
+            $conexiondb->close();
+            return $resultadoSQL;
         }
 
     }

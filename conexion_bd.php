@@ -22,5 +22,9 @@ class ConexionDb
     function validarConexion(){
         return $this->conex->connect_error;
     }
+
+    function getConexion(){
+        return $this->conex;
+    }
 }
 ?>

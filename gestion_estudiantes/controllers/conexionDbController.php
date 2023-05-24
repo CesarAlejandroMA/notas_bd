@@ -28,6 +28,7 @@
         function validarConexion(){
             return $this->conex->connect_error;
         }
+
     }
     
 ?>
