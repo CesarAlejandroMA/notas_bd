@@ -30,6 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actividades</title>
+    <link rel="stylesheet" href="views/css/estilos.css">
 </head>
 
 <body>
@@ -43,14 +44,13 @@
             <?php
             
             echo '<h3>Código: ' . $codigoEstudiante . '</h3>';
-            echo '<h3>Nombre: ' . $nombreEstudiante . '</h3>';
-            echo '<h3>Apellido: ' . $apellidoEstudiante . '</h3>';
+            echo '<h3>Nombre: ' . $nombreEstudiante . " " . $apellidoEstudiante .'</h3>';
             
             ?>
 
             <br>
 
-            <table>
+            <table class="table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -74,19 +74,20 @@
                         $sumaNotas = $sumaNotas + $actividad->getNota();
                     }
 
+                    //Calcular el promedio
+
                     if($contadorNotas == 0){
                         $imprimir = "No hay registro de actividades";
                     }else{
                         $promedio = $sumaNotas / $contadorNotas;
 
                         if($promedio >= 3){
-                            $imprimir = "<label style='color: green'>" . $promedio;
+                            $imprimir = "<label style='color: green'>" . number_format($promedio,3);
                         }else if($promedio < 3){
-                            $imprimir = "<label style='color: red'>" . $promedio;
+                            $imprimir = "<label style='color: red'>" . number_format($promedio,3);
                         }
-                        
-                    }
 
+                    }
 
                     ?>
                 </tbody>

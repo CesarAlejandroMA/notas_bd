@@ -23,8 +23,5 @@ class ConexionDb
         return $this->conex->connect_error;
     }
 
-    function getConexion(){
-        return $this->conex;
-    }
 }
 ?>

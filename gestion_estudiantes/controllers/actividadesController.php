@@ -15,7 +15,7 @@
             $sql .= '(descripcion, nota, codigoEstudiante) values';
             $sql .= '(';
             $sql .= '"' . $actividad->getDescripcion() . '",';
-            $sql .= $actividad->getNota(). ',';
+            $sql .= number_format($actividad->getNota(), 2, '.', '') . ',';
             $sql .= $actividad->getCodEstudiante(). ')';
             $conexiondb = new ConexionDbController();
             $resultadoSQL = $conexiondb->execSQL($sql);

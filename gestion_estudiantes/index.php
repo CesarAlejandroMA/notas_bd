@@ -21,12 +21,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+    <link rel="stylesheet" href="views/css/estilos.css">
 </head>
 
 <body>
     <main>
         <h1>Estudiantes registrados</h1>
-        <table>
+        <table class="table-bordered">
             <thead>
                 <tr>
                     <th>Codigo</th>

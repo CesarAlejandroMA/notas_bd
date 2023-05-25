@@ -48,15 +48,11 @@
             <br>
         </label>
         <label>
-            <span>Nombre: <?php echo $nombreEstudiante ?></span>
+            <span>Nombre: <?php echo $nombreEstudiante . " " . $apellidoEstudiante?></span>
             <input type="hidden" name="nombre" value="<?php echo $nombreEstudiante ?>">
             <br>
         </label>
-        <label>
-            <span>Apellido: <?php echo $apellidoEstudiante ?></span>
             <input type="hidden" name="apellido" value="<?php echo $apellidoEstudiante ?>">
-            <br>
-        </label>
         <label>
             <span>Descripción: </span>
             <input name="descripcion" style="width: 300px; height: 80px" value="<?php echo $actividad->getDescripcion(); ?>" ></input>
@@ -64,7 +60,7 @@
         </label>
         <label>
             <span>Nota: </span>
-            <input type="number" name="nota" min="0.1" max = "5" step="0.1" value="<?php echo $actividad->getNota(); ?>" require>
+            <input type="number" name="nota" min="0" max = "5" step="0.1" value="<?php echo $actividad->getNota(); ?>" require>
             <br>
         </label>
         <input type="hidden" name="id" value="<?php echo $id ?>">
