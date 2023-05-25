@@ -29,10 +29,11 @@
         <h1>Estudiantes registrados</h1>
         <table class="table-bordered">
             <thead>
-                <tr>
+                <tr class="table-encabezado">
                     <th>Codigo</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +43,7 @@
                     echo '<td>' . $estudiante->getCode() . '</td>';
                     echo '<td>' . $estudiante->getFirstName() . '</td>';
                     echo '<td>' . $estudiante->getLastName() . '</td>';
-                    echo '<td>';
+                    echo '<td class="table-content">';
                     echo '      <a href="views/form_estudiante.php?codigo=' . $estudiante->getCode() . '">Modificar</a>';
                     echo '      <a href="views/action_elim_est.php?codigo=' . $estudiante->getCode() . '">Eliminar</a>';
                     echo '      <a href="actividades.php?codigo=' . $estudiante->getCode() . '&nombre=' . $estudiante->getFirstName() . '&apellido=' . $estudiante->getLastName() . '">Notas</a>';

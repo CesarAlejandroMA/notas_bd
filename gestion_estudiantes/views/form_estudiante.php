@@ -29,29 +29,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudiante</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
     <h1><?php echo $titulo; ?></h1>
-    <form action="<?php echo $urlAction; ?>" method="post">
+    <form action="<?php echo $urlAction; ?>" method="post" >
         <label>
             <span>Código:</span>
             <!--
                 El value se usa para pasar los datos por post
             -->
-            <input type="number" name="codigo" min="1" value="<?php echo $estudiante->getCode(); ?>" require>
+            <input class="border-input" type="number" name="codigo" min="1" value="<?php echo $estudiante->getCode(); ?>" require>
         </label>
-        <br>
+        <br><br>
         <label>
             <span>Nombre:</span>
-            <input type="text" name="nombres" value="<?php echo $estudiante->getFirstName(); ?>" require>
+            <input class="border-input" type="text" name="nombres" value="<?php echo $estudiante->getFirstName(); ?>" require>
         </label>
-        <br>
+        <br><br>
         <label>
             <span>Apellido:</span>
-            <input type="text" name="apellidos" value="<?php echo $estudiante->getLastName(); ?>" require>
+            <input class="border-input" type="text" name="apellidos" value="<?php echo $estudiante->getLastName(); ?>" require>
         </label>
-        <br>
+        <br><br>
         <button type="submit">Guardar</button>
     </form>
 </body>

@@ -37,35 +37,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar actividad</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
     <h1><?php echo $titulo; ?></h1>
         <form action="<?php echo $urlAction; ?>" method="post">
         <label>
+            <span>Nombre: <?php echo $nombreEstudiante . " " . $apellidoEstudiante?></span><br>
             <span>Código: <?php echo $codigoEstudiante ?></span>
             <input type="hidden" name="codigo" value="<?php echo $codigoEstudiante ?>">
             <br>
         </label>
         <label>
-            <span>Nombre: <?php echo $nombreEstudiante . " " . $apellidoEstudiante?></span>
             <input type="hidden" name="nombre" value="<?php echo $nombreEstudiante ?>">
             <br>
         </label>
             <input type="hidden" name="apellido" value="<?php echo $apellidoEstudiante ?>">
         <label>
             <span>Descripción: </span>
-            <input name="descripcion" style="width: 300px; height: 80px" value="<?php echo $actividad->getDescripcion(); ?>" ></input>
+            <input class="border-input" name="descripcion" style="width: 300px; height: 80px" value="<?php echo $actividad->getDescripcion(); ?>" ></input>
             <br><br>
         </label>
         <label>
             <span>Nota: </span>
-            <input type="number" name="nota" min="0" max = "5" step="0.1" value="<?php echo $actividad->getNota(); ?>" require>
+            <input class="border-input" type="number" name="nota" min="0" max = "5" step="0.1" value="<?php echo $actividad->getNota(); ?>" require>
             <br>
         </label>
         <input type="hidden" name="id" value="<?php echo $id ?>">
         <br>
-        <button type="submit">Guardar</button>
+        <button class="button" type="submit">Guardar</button>
         </form>
 </body>
 

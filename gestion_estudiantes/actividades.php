@@ -43,8 +43,8 @@
 
             <?php
             
-            echo '<h3>Código: ' . $codigoEstudiante . '</h3>';
             echo '<h3>Nombre: ' . $nombreEstudiante . " " . $apellidoEstudiante .'</h3>';
+            echo '<h3>Código: ' . $codigoEstudiante . '</h3>';
             
             ?>
 
@@ -52,10 +52,11 @@
 
             <table class="table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="table-encabezado">
                         <th>ID</th>
                         <th>Actividad</th>
                         <th>Nota</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +66,7 @@
                         echo '<td>' . $actividad->getId() . '</td>';
                         echo '<td>' . $actividad->getDescripcion() . '</td>';
                         echo '<td>' . $actividad->getNota() . '</td>';
-                        echo '<td>';
+                        echo '<td class="table-content">';
                         echo '      <a href="views/form_actividad.php?id=' . $actividad->getId() . ' &codigo=' . $codigoEstudiante . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Modificar</a>';
                         echo '      <a href="views/action_elim_act.php?id=' . $actividad->getId() . '&codigo=' . $codigoEstudiante . '&nombre=' . $nombreEstudiante . '&apellido=' . $apellidoEstudiante . '">Eliminar</a>';
                         echo '</td>';

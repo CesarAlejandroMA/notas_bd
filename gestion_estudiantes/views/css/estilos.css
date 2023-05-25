@@ -8,3 +8,39 @@
     border: 1px solid black;
 }
 
+thead{
+    background: rgba(32, 32, 32, 0.9);
+}
+
+.table-encabezado{
+    color: rgb(255, 255, 255);
+}
+
+.table-content{
+    font-style: oblique;
+}
+
+.border-input{
+    border: 1px solid rgb(60, 105, 126);
+}
+
+button{
+    background-color: #03185e;
+    border: 0px;
+    height: 30px;
+    width: 80px;
+    color: #ffffff;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover{ /*En un evento sirve para sombrear
+    cuando el cursor de pasa sobre el elemento seleccionado*/
+    background-color: #ffffff;
+    border: 1px solid #03185e;
+    color: #03185e;
+}
+
+h1{
+    color: rgb(21, 75, 57);
+}
